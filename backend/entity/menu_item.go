@@ -9,16 +9,17 @@ import (
 
 // MenuItem is the managed menu record used by customers and staff.
 type MenuItem struct {
-	ID            int64
-	Name          string
-	Description   string
-	PriceCents    int64
-	StockQuantity int
-	IsAvailable   bool
-	IsActive      bool
-	CategoryID    int64
-	CreatedAt     time.Time
-	UpdatedAt     time.Time
+	ID                int64
+	Name              string
+	Description       string
+	PriceCents        int64
+	StockQuantity     int
+	LowStockThreshold int
+	IsAvailable       bool
+	IsActive          bool
+	CategoryID        int64
+	CreatedAt         time.Time
+	UpdatedAt         time.Time
 }
 
 // Validate checks the business rules for a menu item.
@@ -32,6 +33,8 @@ func (m MenuItem) Validate() error {
 		return errors.New("menu item price must be greater than zero")
 	case m.StockQuantity < 0:
 		return fmt.Errorf("menu item stock quantity must be zero or greater")
+	case m.LowStockThreshold < 0:
+		return fmt.Errorf("menu item low stock threshold must be zero or greater")
 	case m.CategoryID <= 0:
 		return errors.New("menu item category id is required")
 	}
@@ -60,6 +63,11 @@ func (m MenuItem) CustomerOrderable() bool {
 func (m *MenuItem) ApplyStockQuantity(quantity int) {
 	m.StockQuantity = quantity
 	m.RecalculateAvailability()
+}
+
+// LowStock reports whether the item is at or below its warning threshold.
+func (m MenuItem) LowStock() bool {
+	return m.IsActive && m.StockQuantity <= m.LowStockThreshold
 }
 
 // ApplyPrice updates the item price while keeping validation responsibility local.

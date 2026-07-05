@@ -5,6 +5,21 @@ type Viewport = {
   height: number;
 };
 
+export const mobileViewport: Viewport = {
+  width: 375,
+  height: 812,
+};
+
+export const tabletViewport: Viewport = {
+  width: 768,
+  height: 1024,
+};
+
+export const desktopViewport: Viewport = {
+  width: 1280,
+  height: 900,
+};
+
 const defaultViewport: Viewport = {
   width: 1440,
   height: 900,
@@ -24,6 +39,18 @@ function applyViewport(viewport: Viewport) {
 
 export function setViewport(viewport: Viewport) {
   applyViewport(viewport);
+}
+
+export function setMobileViewport() {
+  applyViewport(mobileViewport);
+}
+
+export function setTabletViewport() {
+  applyViewport(tabletViewport);
+}
+
+export function setDesktopViewport() {
+  applyViewport(desktopViewport);
 }
 
 beforeEach(() => {

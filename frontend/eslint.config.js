@@ -1,6 +1,20 @@
 import js from '@eslint/js';
 import vue from 'eslint-plugin-vue';
 import prettier from 'eslint-config-prettier';
+import tsParser from '@typescript-eslint/parser';
+import vueParser from 'vue-eslint-parser';
+
+const vitestGlobals = {
+  afterEach: 'readonly',
+  beforeEach: 'readonly',
+  describe: 'readonly',
+  expect: 'readonly',
+  it: 'readonly',
+  vi: 'readonly',
+  window: 'readonly',
+  Event: 'readonly',
+  MediaQueryList: 'readonly',
+};
 
 export default [
   {
@@ -10,23 +24,27 @@ export default [
   ...vue.configs['flat/recommended'],
   prettier,
   {
-    files: ['**/*.vue', '**/*.ts'],
+    files: ['**/*.ts'],
     languageOptions: {
+      parser: tsParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
+      globals: vitestGlobals,
     },
     rules: {
       'vue/multi-word-component-names': 'off',
     },
   },
   {
-    files: ['tests/**/*.ts'],
+    files: ['**/*.vue'],
     languageOptions: {
-      globals: {
-        Event: 'readonly',
-        MediaQueryList: 'readonly',
-        window: 'readonly',
+      parser: vueParser,
+      parserOptions: {
+        parser: tsParser,
+        ecmaVersion: 'latest',
+        sourceType: 'module',
       },
+      globals: vitestGlobals,
     },
   },
 ];

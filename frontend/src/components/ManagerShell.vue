@@ -7,12 +7,22 @@
       </div>
 
       <nav class="manager-shell__nav" aria-label="Manager navigation">
-        <button type="button" class="manager-shell__nav-button" aria-pressed="true">
+        <button
+          type="button"
+          class="manager-shell__nav-button"
+          :aria-pressed="activeView === 'menu'"
+          @click="navigate('menu')"
+        >
           Menu
         </button>
-        <button type="button" class="manager-shell__nav-button">Pricing</button>
-        <button type="button" class="manager-shell__nav-button">Stock</button>
-        <button type="button" class="manager-shell__nav-button">History</button>
+        <button
+          type="button"
+          class="manager-shell__nav-button"
+          :aria-pressed="activeView === 'low-stock'"
+          @click="navigate('low-stock')"
+        >
+          Low stock
+        </button>
       </nav>
     </header>
 
@@ -22,4 +32,16 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+type ManagerView = 'menu' | 'low-stock';
+
+defineProps<{
+  activeView: ManagerView;
+}>();
+
+const emit = defineEmits(['navigate']);
+
+function navigate(view: ManagerView) {
+  emit('navigate', view);
+}
+</script>
