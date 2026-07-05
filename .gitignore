@@ -1,0 +1,115 @@
+### =========================
+### General / OS
+### =========================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+### =========================
+### Environment / Secrets
+### =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+### =========================
+### Node / Vue (frontend)
+### =========================
+node_modules/
+**/node_modules/
+dist/
+dist-ssr/
+.vite/
+.turbo/
+*.local
+.pnpm-store/
+.eslintcache
+coverage/
+
+# Vue / Vite build outputs
+frontend/dist/
+frontend/.vite/
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+### =========================
+### Go (backend)
+### =========================
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+backend/bin/
+bin/
+
+# Test binary / coverage
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Go build cache / vendor (ถ้าไม่ต้องการ commit vendor ให้เปิดบรรทัดล่าง)
+# vendor/
+
+# Air (live reload) tmp
+tmp/
+backend/tmp/
+
+### =========================
+### IDE / Editor
+### =========================
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+
+### =========================
+### AI / Vibecoding Tools
+### =========================
+# Claude Code
+.claude/
+CLAUDE.local.md
+
+# Cursor
+.cursor/
+.cursorignore
+.cursorrules.local
+
+# GitHub Copilot workspace cache
+.github/copilot/
+
+# Windsurf / Codeium
+.windsurf/
+.codeium/
+
+# Aider
+.aider*
+.aider.tags.cache*
+
+# OpenAI Codex CLI
+.codex/
+codex.log
+.codex.local.*
+
+# Generic AI scratch / prompt cache dirs
+.ai/
+.prompt-cache/
+*.aiprompt
+
+### =========================
+### Docker (ถ้ามีใช้)
+### =========================
+*.pid
+docker-compose.override.yml
