@@ -1,0 +1,197 @@
+:root {
+  --manager-bg: #f8fafc;
+  --manager-surface: #ffffff;
+  --manager-surface-alt: #eef2ff;
+  --manager-border: #dbe2ea;
+  --manager-text: #0f172a;
+  --manager-muted: #475569;
+  --manager-accent: #1d4ed8;
+  --manager-accent-soft: #dbeafe;
+  --manager-success: #166534;
+}
+
+.manager-shell {
+  min-height: 100dvh;
+  padding: 1rem;
+  background:
+    linear-gradient(180deg, rgba(226, 232, 240, 0.45) 0%, rgba(248, 250, 252, 0.95) 100%),
+    var(--manager-bg);
+  color: var(--manager-text);
+}
+
+.manager-shell__header,
+.manager-shell__main {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.manager-shell__header {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--manager-surface);
+  border: 1px solid var(--manager-border);
+  border-radius: 0.5rem;
+}
+
+.manager-shell__brand {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.manager-shell__eyebrow,
+.manager-page__eyebrow,
+.manager-panel__label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--manager-muted);
+}
+
+.manager-shell__title,
+.manager-page__title,
+.manager-panel__title {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.manager-shell__title {
+  font-size: 1.5rem;
+}
+
+.manager-shell__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.manager-shell__nav-button,
+.manager-page__action-button {
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--manager-border);
+  border-radius: 0.375rem;
+  background: var(--manager-surface);
+  color: var(--manager-text);
+  font: inherit;
+  font-weight: 600;
+  touch-action: manipulation;
+}
+
+.manager-shell__nav-button[aria-pressed='true'] {
+  background: var(--manager-accent-soft);
+  border-color: transparent;
+  color: var(--manager-accent);
+}
+
+.manager-shell__main {
+  display: grid;
+  gap: 1rem;
+}
+
+.manager-page__hero {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--manager-surface);
+  border: 1px solid var(--manager-border);
+  border-radius: 0.5rem;
+}
+
+.manager-page__hero-copy {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.manager-page__title {
+  font-size: 1.5rem;
+}
+
+.manager-page__description,
+.manager-panel__body {
+  margin: 0;
+  color: var(--manager-muted);
+  line-height: 1.5;
+}
+
+.manager-page__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.manager-page__action-button {
+  background: var(--manager-accent);
+  border-color: var(--manager-accent);
+  color: #ffffff;
+}
+
+.manager-page__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.manager-panel {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--manager-surface);
+  border: 1px solid var(--manager-border);
+  border-radius: 0.5rem;
+}
+
+.manager-panel--highlight {
+  background: var(--manager-surface-alt);
+}
+
+.manager-panel__title {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .manager-shell {
+    padding: 1.5rem;
+  }
+
+  .manager-shell__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .manager-shell__nav {
+    grid-template-columns: repeat(4, minmax(6.5rem, 1fr));
+  }
+
+  .manager-page__hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+
+  .manager-page__actions {
+    grid-template-columns: minmax(9rem, 1fr);
+    align-content: start;
+  }
+
+  .manager-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .manager-shell {
+    padding: 2rem;
+  }
+
+  .manager-page__title,
+  .manager-shell__title {
+    font-size: 1.875rem;
+  }
+
+  .manager-page__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
