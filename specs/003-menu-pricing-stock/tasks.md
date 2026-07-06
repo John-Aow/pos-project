@@ -256,3 +256,9 @@ Task: "T049 Implement LowStockAlert.vue in frontend/src/components/LowStockAlert
 - `[US1]`, `[US2]`, and `[US3]` map directly to spec user stories.
 - Keep frontend and backend independent; communicate through documented API contracts only.
 - Stop for human confirmation if any implementation requires editing or deleting existing schema/data.
+
+## Phase 7: Convergence
+
+- [ ] T056 Add inventory-settings audit logging for low-stock threshold changes in `backend/usecase/inventory_usecase.go` and `backend/interface/adapter/http/settings_handler.go` so threshold updates write an auditable record per `contracts/menu-management-api.md` audit contract (partial)
+- [ ] T057 Replace demo-seeded inventory data with backend-backed loading in `frontend/src/pages/MenuManagementView.vue`, `frontend/src/pages/LowStockView.vue`, and `frontend/src/stores/inventoryStore.ts` so menu edits and low-stock warnings share persisted state per FR-008/FR-011/FR-012 (partial)
+- [ ] T058 Add a real historical order/bill snapshot integration check against Feature 1 order persistence in `backend/infrastructure/postgres/menu_repository_test.go` and `backend/tests/price_stock_usecase_test.go` so price updates are proven not to mutate historical `OrderItem.unit_price` snapshots per FR-010/SC-004/US2/AC1 (partial)
